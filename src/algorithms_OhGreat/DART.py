@@ -122,8 +122,8 @@ class DART():
         alg_cfg['ProjectionDataId'] = free_sino_id if mask is not None else self.sinogram_id
         alg_cfg['ReconstructionDataId'] = rec_id
         alg_cfg['option'] = {}
-        alg_cfg['option']['MinConstraint'] = 0
-        alg_cfg['option']['MaxConstraint'] = 255
+        # alg_cfg['option']['MinConstraint'] = 0
+        # alg_cfg['option']['MaxConstraint'] = 255
         if mask is not None:
             mask_id = astra.data2d.create('-vol', self.vol_geom, mask)
             alg_cfg['option']['ReconstructionMaskId'] = mask_id
@@ -152,7 +152,8 @@ class DART():
                 - segmented_img: (np.array) of segmented image.
         """
         # compute segmentation
-        segmented_img = np.full(img.shape, 0, dtype=np.uint8)
+        # segmented_img = np.full(img.shape, 0, dtype=np.uint8)
+        segmented_img = np.full(img.shape, 0)
         for thresh_idx in range(len(self.thresholds)-1):
             cond = (img >= self.thresholds[thresh_idx]) * (img <= self.thresholds[thresh_idx+1])
             segmented_img[cond] = self.gray_levels[thresh_idx]

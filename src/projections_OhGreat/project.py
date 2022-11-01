@@ -43,7 +43,8 @@ def project_from_2D(phantom_id, vol_geom, n_projections,
                 save_dir += '/'
             if not isdir(save_dir):
                 mkdir(save_dir)
-            proj_for_img = np.round(sinogram * (2**8- 1)).astype(np.uint8)
+            # proj_for_img = np.round(sinogram * (2**8- 1)).astype(np.uint8)
+            proj_for_img = sinogram
             for i in range(n_projections):
                 Image.fromarray(proj_for_img[i]).save(save_dir+f'proj_{i}.png')
 

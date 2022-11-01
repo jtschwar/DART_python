@@ -317,7 +317,8 @@ def create_clouds(img_size=512, gray_values=[80,120,180], n=1,
             image[(xv-0.4)**2+(yv-0.3)**2/0.4<0.02] = 0
             image[(xv-0.1)**2+(yv-0.1)**2/0.4<0.02] = 0
 
-        clouds.append(image.astype(np.uint8))
+        # clouds.append(image.astype(np.uint8))
+        clouds.append(image)
 
         # save image
         if img_name != None:
