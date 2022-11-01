@@ -72,7 +72,7 @@ Parameters:
                 it will be created as a png by default.
 
 Output:
-- python list of phantoms. (Phantoms as numpy arrays of type np.uint8)
+- python list of phantoms.
 
 ### Generating projections
 
