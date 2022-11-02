@@ -1,6 +1,6 @@
 import astra
 
-def SART(vol_geom, vol_data, projector_id, sino_id, iters=2000, use_gpu=False):
+def SART(vol_geom, vol_data, projector_id, sino_id, iters=2000, use_gpu=False, min_constraint=0, max_constraint=255):
         """ Simultaneous Algebraic Reconstruction Technique (SART) with
             randomized scheme. Used from DART as the continious update step.
         """
@@ -12,8 +12,8 @@ def SART(vol_geom, vol_data, projector_id, sino_id, iters=2000, use_gpu=False):
         alg_cfg['ProjectionDataId'] = sino_id
         alg_cfg['ReconstructionDataId'] = rec_id
         alg_cfg['option'] = {}
-        # alg_cfg['option']['MinConstraint'] = 0
-        # alg_cfg['option']['MaxConstraint'] = 255
+        alg_cfg['option']['MinConstraint'] = min_constraint
+        alg_cfg['option']['MaxConstraint'] = max_constraint
         # define algorithm
         algorithm_id = astra.algorithm.create(alg_cfg)
         # run the algirithm

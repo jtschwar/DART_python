@@ -122,8 +122,8 @@ class DART():
         alg_cfg['ProjectionDataId'] = free_sino_id if mask is not None else self.sinogram_id
         alg_cfg['ReconstructionDataId'] = rec_id
         alg_cfg['option'] = {}
-        # alg_cfg['option']['MinConstraint'] = 0
-        # alg_cfg['option']['MaxConstraint'] = 255
+        alg_cfg['option']['MinConstraint'] = min(self.gray_levels)
+        alg_cfg['option']['MaxConstraint'] = max(self.gray_levels)
         if mask is not None:
             mask_id = astra.data2d.create('-vol', self.vol_geom, mask)
             alg_cfg['option']['ReconstructionMaskId'] = mask_id
