@@ -140,8 +140,8 @@ class DART():
         """ Updates algorithms' thresholds for the currently
             defined gray values.
         """
-        return [0] + [(self.gray_levels[i]+self.gray_levels[i+1])/2 
-                        for i in range(len(self.gray_levels)-1) ] + [255]
+        return [min(self.gray_levels)] + [(self.gray_levels[i]+self.gray_levels[i+1])/2 
+                        for i in range(len(self.gray_levels)-1) ] + [max(self.gray_levels)]
 
     def segment(self, img):
         """ Segments the input image to obtain an image with
